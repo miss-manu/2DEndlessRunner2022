@@ -7,37 +7,72 @@ public class RobotController : MonoBehaviour
     public float maxSpeed = 2f;                 // This will be our maximum Robot speed
     private float move = 0f;                    // Sets robot to still on entry
 
-    bool facingLeft = true;                     //
+    bool facingLeft = true;                     // 
 
-    Rigidbody2D rb;                             
+    Rigidbody2D rigidBody2d;
+    Animator animator;
+
+    bool grounded = false;                      // Check if player is on the ground
+    public Transform groundCheck;
+    float groundRadius = 0.9f;
+    public LayerMask whatIsGround;
+    public float jumpForce = 100f;
     
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        move = Input.GetAxisRaw("Horizontal");  // Gives the a value of 1 or -1 when we use arrow keys
-        rb.velocity = new Vector2(move * maxSpeed, rb.velocity.y);
+        // Check for player LR movement
+        move = Input.GetAxisRaw("Horizontal");                          // Gives the a value of 1 or -1 when we use arrow keys
 
+        // Check for player jump input
+        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerJump();
+        }
+
+    }
+
+    void FixedUpdate()
+    {
+        // Move player
+        rigidBody2d.velocity = new Vector2(move * maxSpeed, rigidBody2d.velocity.y);
+
+        // Check player is on the ground
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+
+        // Player animations
+        animator.SetFloat("Speed", Mathf.Abs(move));
+
+        // Flip Player to direction of movement
         if (move < 0 && !facingLeft)
         {
-            Flip();
+            PlayerFlip();
         }
         else if (move > 0 && facingLeft)
         {
-            Flip();
+            PlayerFlip();
         }
+              
     }
 
-    void Flip()
+    // Flip the player
+    void PlayerFlip()
     {
         facingLeft = !facingLeft;
-        Vector3 theScale = transform.localScale;
+        Vector2 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void PlayerJump()
+    {
+        rigidBody2d.AddForce(new Vector2(0, jumpForce));
     }
 }
