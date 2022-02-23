@@ -7,15 +7,16 @@ public class RobotController : MonoBehaviour
     public float maxSpeed = 2f;                 // This will be our maximum Robot speed
     private float move = 0f;                    // Sets robot to still on entry
 
-    bool facingLeft = true;                     // 
+    bool facingLeft = true;                     // Set the direction of player sprite
 
     Rigidbody2D rigidBody2d;
     Animator animator;
 
-    bool grounded = false;                      // Check if player is on the ground
-    public Transform groundCheck;
-    float groundRadius = 0.9f;
-    public LayerMask whatIsGround;
+    // To check ground & values for use in Editor
+    bool grounded = false;                      
+    public Transform groundCheck;               // Check position is on ground
+    float groundRadius = 0.9f;                  // Scan for proximity of position to ground
+    public LayerMask whatIsGround;              // Determine ground for player
     public float jumpForce = 100f;
     
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class RobotController : MonoBehaviour
     void Update()
     {
         // Check for player LR movement
-        move = Input.GetAxisRaw("Horizontal");                          // Gives the a value of 1 or -1 when we use arrow keys
+        move = Input.GetAxisRaw("Horizontal");
 
         // Check for player jump input
         if (grounded && Input.GetKeyDown(KeyCode.Space))
@@ -49,6 +50,8 @@ public class RobotController : MonoBehaviour
 
         // Player animations
         animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetFloat("vSpeed", rigidBody2d.velocity.y);
+        animator.SetBool("Ground", grounded);
 
         // Flip Player to direction of movement
         if (move < 0 && !facingLeft)
