@@ -20,6 +20,7 @@ public class CameraFollow : MonoBehaviour
             {
                 randomY = Random.Range(0f, 75f);
 
+                // Set how the camera will randomly move forward
                 if (randomY < 25)
                 {
                     yDirection = yDirection + .005f;

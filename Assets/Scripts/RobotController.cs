@@ -5,7 +5,7 @@ using UnityEngine;
 public class RobotController : MonoBehaviour
 {
     public float maxSpeed = 2f;                 // This will be our maximum Robot speed
-    private float move = 0f;                    // Sets robot to still on entry
+    public float move = 0f;                    // Sets robot to still on entry
 
     bool facingLeft = true;                     // Set the direction of player sprite
 
