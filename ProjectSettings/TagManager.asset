@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Prefab
   - Hand
+  - PowerUp
   layers:
   - Default
   - TransparentFX

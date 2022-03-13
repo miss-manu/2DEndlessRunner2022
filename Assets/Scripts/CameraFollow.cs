@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     float yDirection = 0f;          // Position of camera placement
     float randomY = 0f;             // Random Y position
+    float cameraSpeed = 0.06f;      // Speed that camera moves
 
     public GameObject player;
 
@@ -34,7 +35,7 @@ public class CameraFollow : MonoBehaviour
                     yDirection = 0f;
                 }
 
-                transform.position = new Vector3(transform.position.x + 0.03f, transform.position.y + yDirection, -10);
+                transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y + yDirection, -10);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using TMPro;                                         // An important new library for accessing TextMeshPro
 
 public class Score : MonoBehaviour
@@ -8,10 +9,20 @@ public class Score : MonoBehaviour
     private RobotController playerPosition;         
     private float playerScore = 0;
 
+    public List<string> powerUpInventory;                       // Stores powerups collected 
+
+    public static Score ScoreManager { get; private set; }
+
+    private void Awake()
+    {
+        ScoreManager = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         playerPosition = player.GetComponent<RobotController>();        // A reference to the Robot Controller script, on our player
+        powerUpInventory = new List<string>();                          // Set list component
     }
 
     // Update is called once per frame
@@ -22,9 +33,28 @@ public class Score : MonoBehaviour
         {
             if (playerPosition.move != -1)  // Only add to the score if the player is NOT moving left/backwards
             {
-                playerScore += Time.deltaTime;                                          // Add 'metres' to our score
-                scoreText.text = "Score: " + ((int)(playerScore * 10)).ToString();      // Display the score in our interface
+                IncreaseScore(Time.deltaTime * 10);                      // Add 'metres' to our score
+                DisplayScore(playerScore);
             }
         }  
+    }
+
+    public void IncreaseScore (float amount)
+    {
+        playerScore += amount;
+    }
+
+
+    public void DisplayScore (float score)
+    {
+        scoreText.text = "Score: " + ((int)(score)).ToString();            // Display the score in our interface
+    }
+
+
+    public void UpdateInventory(string bonusCollectable)
+    {
+        powerUpInventory.Add(bonusCollectable);
+        print("You have collected a: " + bonusCollectable);                 // What item was collected?
+        print("Inventory length: " + powerUpInventory.Count);               // What is the list count?
     }
 }
