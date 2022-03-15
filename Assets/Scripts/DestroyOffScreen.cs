@@ -16,7 +16,7 @@ public class DestroyOffScreen : MonoBehaviour
         }
         else if (collision.CompareTag("Prefab"))
         {
-            Debug.Log("Collision was caused by: " + collision.tag);     // Check a prefab caused the collision
+            //Debug.Log("Collision was caused by: " + collision.tag);     // Check a prefab caused the collision
             Destroy(collision.gameObject);                              // Then destroy the prefab
         }
     }
