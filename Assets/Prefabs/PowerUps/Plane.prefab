@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1257393391186463716}
   - component: {fileID: 1257393391186463715}
   m_Layer: 0
-  m_Name: puPlane
+  m_Name: Plane
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadc01b9518ba644c824a9fdb54689ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraSpeed: 0.04
   player: {fileID: 1080671836}
 --- !u!20 &519420031
 Camera:
@@ -1363,7 +1364,7 @@ GameObject:
   - component: {fileID: 1760702257}
   - component: {fileID: 1760702258}
   m_Layer: 0
-  m_Name: PUSpawn
+  m_Name: powerUpSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1397,11 +1398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle:
   - {fileID: 11849032308781273, guid: ad30b20705d8d9a42972c9d487a1990b, type: 3}
-  - {fileID: 11849032308781273, guid: ad30b20705d8d9a42972c9d487a1990b, type: 3}
   - {fileID: 1257393391186463714, guid: d93407e7a94f1c64ab20fdfad74b9f87, type: 3}
-  - {fileID: 11849032308781273, guid: ad30b20705d8d9a42972c9d487a1990b, type: 3}
+  - {fileID: 6290759086544571627, guid: 7b506f5e1e8b9fd45a56669bd6c434c1, type: 3}
+  - {fileID: 9036243527775954235, guid: b42992884a54038479dfc2739748d50f, type: 3}
+  - {fileID: 4370997373056177538, guid: 0617d3cd6d0b89f47ab9517c7ae69b29, type: 3}
   - {fileID: 3648749933993261114, guid: d73ebccc3e59a784fb7317ff27849fbe, type: 3}
-  - {fileID: 1257393391186463714, guid: d93407e7a94f1c64ab20fdfad74b9f87, type: 3}
   spawnMinimum: 3
   spawnMaximum: 2
 --- !u!1 &1839768587

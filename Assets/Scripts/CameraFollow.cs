@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     float yDirection = 0f;          // Position of camera placement
     float randomY = 0f;             // Random Y position
-    float cameraSpeed = 0.06f;      // Speed that camera moves
+    public float cameraSpeed = 0.06f;      // Speed that camera moves
 
     public GameObject player;
 

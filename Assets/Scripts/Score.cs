@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
     public TMP_Text scoreText;                      // A reference to the text in User interface
     private RobotController playerPosition;         
     private float playerScore = 0;
+    private float pointsPerSecond = 10;
 
     public List<string> powerUpInventory;                       // Stores powerups collected 
 
@@ -33,7 +34,7 @@ public class Score : MonoBehaviour
         {
             if (playerPosition.move != -1)  // Only add to the score if the player is NOT moving left/backwards
             {
-                IncreaseScore(Time.deltaTime * 10);                      // Add 'metres' to our score
+                IncreaseScore(Time.deltaTime * pointsPerSecond);                      // Add 'metres' to our score
                 DisplayScore(playerScore);
             }
         }  
