@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;                                         // An important new library for accessing TextMeshPro
+using TMPro;                                        // An important new library for accessing TextMeshPro
 
 public class Score : MonoBehaviour
 {
@@ -40,6 +40,7 @@ public class Score : MonoBehaviour
         }  
     }
 
+    
     public void IncreaseScore (float amount)
     {
         playerScore += amount;
@@ -57,5 +58,11 @@ public class Score : MonoBehaviour
         powerUpInventory.Add(bonusCollectable);
         print("You have collected a: " + bonusCollectable);                 // What item was collected?
         print("Inventory length: " + powerUpInventory.Count);               // What is the list count?
+    }
+
+
+    public void OnDisable()
+    {
+        PlayerPrefs.SetInt("Score", (int)(playerScore));                    // Save the score, when the scene is changed (onDisable)
     }
 }

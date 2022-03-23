@@ -12,7 +12,7 @@ public class ItemSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Spawn();                                // Start the spawning of obstacles
+        Invoke("Spawn", 5);                                // Start the spawning of obstacles
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class ItemSpawner : MonoBehaviour
         if (rand < 50)
         {
             // Create a copy of the game obstacle in this place
-            Instantiate(obstacle[Random.Range(0, obstacle.GetLength(0))], transform.position, Quaternion.identity);
+            Instantiate(obstacle[Random.Range(0, obstacle.Length)], transform.position, Quaternion.identity);
         }
 
         // Run the Spawn function again, after randomly selected seconds
