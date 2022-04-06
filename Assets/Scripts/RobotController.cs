@@ -15,7 +15,7 @@ public class RobotController : MonoBehaviour
     // To check ground & values for use in Editor
     bool grounded = false;                      
     public Transform groundCheck;               // Check position is on ground
-    float groundRadius = 0.9f;                  // Scan for proximity of position to ground
+    readonly float groundRadius = 0.9f;                  // Scan for proximity of position to ground
     public LayerMask whatIsGround;              // Determine ground for player
     public float jumpForce = 100f;
     

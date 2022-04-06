@@ -30,6 +30,10 @@ public class BombDestroy : MonoBehaviour
                     // Destroy the objects
                     Destroy(col.gameObject);
                 }
+                else if (col.tag == "Player")
+                {
+                    Debug.Log("Player got bombed!");
+                }
             }
 
             // Then make sure the object itself is deleted (eg. bomb)

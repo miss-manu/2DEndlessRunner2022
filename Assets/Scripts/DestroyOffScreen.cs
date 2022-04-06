@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestroyOffScreen : MonoBehaviour
 {
@@ -10,9 +11,8 @@ public class DestroyOffScreen : MonoBehaviour
         // Check if the collision was triggered by Player
         if (collision.CompareTag("Player"))
         {
-            // Then pause the game & return to editor
-            Debug.Break();
-            return;
+            // Player dies, load game over scene
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
         else if (collision.CompareTag("Prefab"))
         {

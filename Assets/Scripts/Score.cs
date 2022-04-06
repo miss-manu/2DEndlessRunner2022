@@ -57,4 +57,10 @@ public class Score : MonoBehaviour
         print("You have collected a: " + powerUpCollectable);
         print("Your inventory length is: " + powerUpInventory.Count);
     }
+
+    public void OnDisable()
+    {
+        // When the gameplay scene ends, save the high score
+        PlayerPrefs.SetInt("Score", (int)(playerScore));
+    }
 }
